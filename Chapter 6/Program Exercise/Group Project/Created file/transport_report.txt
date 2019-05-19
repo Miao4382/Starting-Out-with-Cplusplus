@@ -1,0 +1,31 @@
+**Transportation**
+-------------------------------------------------------------------------------------------
+This section displays the details of expenses related to transportation
+
+Round-trip Air Expenses:             $        1200.00
+
+Car rental expense:                  $         200.00
+
+Private car expense:                 $         810.00
+
+Total parking expense:               $          15.00
+
+Parking fee paid by company:         $          12.00
+
+Parking fee paid by employee:        $           3.00
+
+Total taxi expense:                  $          65.00
+
+Taxi fee paid by company:            $          20.00
+
+Taxi fee paid by employee:           $          45.00
+
+Transportation total:                $        2290.00
+
+Transportation allowed:              $        2242.00
+
+Transportation reimburse fee:        $          48.00
+
+-------------------------------------------------------------------------------------------
+
+

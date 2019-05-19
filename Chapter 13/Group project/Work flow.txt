@@ -1,0 +1,2 @@
+work flow:
+input of surgery choice (or pharmacy choice) can be done inside the member function of Surgery or Pharmacy

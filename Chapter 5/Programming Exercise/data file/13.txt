@@ -1,0 +1,30 @@
+The numbers user inputed are:
+1
+2
+3
+4
+2
+1
+2
+3
+5
+6
+4
+2
+12
+523
+23254
+12323
+4212
+341
+235
+12
+34
+-67
+-34
+-112
+-97
+-99
+------
+The highest number is: 23254
+The lowest number is: -112

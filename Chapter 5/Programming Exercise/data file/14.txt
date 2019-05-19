@@ -1,0 +1,15 @@
+     Student Number         Name
+-----------------------------------------
+            1         Miao yu                  
+            2         Cheng yingying           
+            3         Miao yongli              
+            4         Zhao zhengrong           
+            5         Miao ke                  
+            6         Alan Turing              
+            7         Mike jacson              
+            8         David Mite               
+            9         Have Fun                 
+           10         Good day                 
+-----------------------------------------
+The front line student should be: Alan Turing
+The end line student should be: Zhao zhengrong

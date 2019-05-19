@@ -1,0 +1,21 @@
+        ************************************
+         ** High Adventure Travel Agency **
+        ------------------------------------
+              Barron Cliff Spelunk
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Package Description
+---------------------
+Eight days spent hiking and exploring caves in the 
+Barron Cliff Wilderness Area, Tennessee. Camping 
+equipment rental is available.
+
+Package Details:
+-------------------------------------------------------
+Number in Party                               22
+Base Charges                         $  15400.00
+Equipment Rental                     $   3840.00
+Discount                             $   1540.00
+Total Charges                        $  17700.00
+Required Deposit                     $   8850.00
+-------------------------------------------------------

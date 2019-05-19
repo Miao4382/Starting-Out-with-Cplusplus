@@ -1,0 +1,12 @@
+Sales Figure
+ Item name           Item sold
+---------------------------------
+   mild salsa               145
+ medium salsa               325
+  sweet salsa               145
+    hot salsa               548
+  zesty salsa                52
+        Total              1215
+ Highest Sold         hot salsa
+  Lowest Sold       zesty salsa
+---------------------------------

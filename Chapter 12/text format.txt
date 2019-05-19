@@ -1,0 +1,8 @@
+Inventory Management System
+------------------------------
+
+Bin #   Part Description          Number of Parts in the Bin
+----------------------------------------------------------------
+  A      Vacuum Gripper                         30
+
+  

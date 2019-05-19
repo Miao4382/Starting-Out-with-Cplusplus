@@ -1,0 +1,12 @@
+**Hotel Expense**
+-------------------------------------------------------------------------------------------
+This section displays the details of expenses related to hotel fee
+
+Total hotel expense:                 $         216.00
+
+Hotel expense allowed:               $         270.00
+
+Hotel expense saved:                 $          54.00
+
+-------------------------------------------------------------------------------------------
+

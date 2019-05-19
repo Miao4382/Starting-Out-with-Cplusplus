@@ -1,0 +1,98 @@
+Overview:
+
+-------------------------------------------------------------------------------------------
+
+
+
+Taxi fee paid by company:            $          20.00
+-------------------------------------------------------------------------------------------
+Total food expense:                  $         157.20
+**Hotel Expense**
+-------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------
+Private car expense:                 $         810.00
+Seminar registration fee:            $        2400.00
+
+Taxi fee paid by employee:           $          45.00
+                                  Travel Expenses Report
+Departure Time           5:55
+
+Total food expense:                  $         157.20
+
+
+This section displays the details of expenses related to hotel fee
+
+
+
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+
+
+
+
+Seminar registration fee:            $        2400.00
+Expense needs reimbursing            $            3.2
+
+
+
+-------------------------------------------------------------------------------------------
+                                  Travel Expenses Report
+
+
+
+
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+
+
+Back Time                23:0
+Total taxi expense:                  $          65.00
+                                  Travel Expenses Report
+Parking fee paid by company:         $          12.00
+
+
+
+
+
+
+
+
+Taxi fee paid by company:            $          20.00
+
+-------------------------------------------------------------------------------------------
+Expense needs reimbursing            $            3.2
+Total Travel Days            4
+
+Departure Time           5:55
+This section displays the details of expenses related to conference fee
+
+Food expense reimburse:              $           9.20
+Hotel expense saved:                 $          54.00
+
+
+
+
+
+This section displays the total travel days, departure and arrival time.
+Total parking expense:               $          15.00
+Total allowed expense                $           6260
+**Food Expense**
+Private car expense:                 $         810.00
+Conference registration fee:         $        1200.00
+
+Conference registration fee:         $        1200.00
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+Expense needs reimbursing            $            3.2
+Total allowed expense                $           6260
+-------------------------------------------------------------------------------------------
+**Overview**
+-------------------------------------------------------------------------------------------
+
+
+
+
+
+
+

@@ -1,0 +1,20 @@
+Budget Analysis Program v1.00
+-----------------------------------
+Budget: $1000
+Expense:
+$ 20
+$ 30
+$ 20
+$ 40
+$ 40
+$ 20
+$ 30
+$ 40
+$ 10
+$ 20
+$ 50
+$ 30
+$ 90
+$ 75
+-----------------------------------
+Your budget is higher than your expense.

@@ -1,0 +1,99 @@
+                                                                    T R A V E L   E X P E N S E S   R E P O R T 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ 
+ 
+ * * O V E R V I E W * * 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ T H I S   S E C T I O N   D I S P L A Y S   T H E   T O T A L   T R A V E L   D A Y S ,   D E P A R T U R E   A N D   A R R I V A L   T I M E . 
+ 
+ O V E R V I E W : 
+ T O T A L   T R A V E L   D A Y S                         4 
+ D E P A R T U R E   T I M E                       5 : 5 5 
+ B A C K   T I M E                                 2 3 : 0 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ 
+ 
+ 
+ * * T R A N S P O R T A T I O N * * 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ T H I S   S E C T I O N   D I S P L A Y S   T H E   D E T A I L S   O F   E X P E N S E S   R E L A T E D   T O   T R A N S P O R T A T I O N 
+ 
+ R O U N D - T R I P   A I R   E X P E N S E S :                           $                 1 2 0 0 . 0 0 
+ 
+ C A R   R E N T A L   E X P E N S E :                                     $                   2 0 0 . 0 0 
+ 
+ P R I V A T E   C A R   E X P E N S E :                                   $                   8 1 0 . 0 0 
+ 
+ T O T A L   P A R K I N G   E X P E N S E :                               $                     1 5 . 0 0 
+ 
+ P A R K I N G   F E E   P A I D   B Y   C O M P A N Y :                   $                     1 2 . 0 0 
+ 
+ P A R K I N G   F E E   P A I D   B Y   E M P L O Y E E :                 $                       3 . 0 0 
+ 
+ T O T A L   T A X I   E X P E N S E :                                     $                     6 5 . 0 0 
+ 
+ T A X I   F E E   P A I D   B Y   C O M P A N Y :                         $                     2 0 . 0 0 
+ 
+ T A X I   F E E   P A I D   B Y   E M P L O Y E E :                       $                     4 5 . 0 0 
+ 
+ T R A N S P O R T A T I O N   T O T A L :                                 $                 2 2 9 0 . 0 0 
+ 
+ T R A N S P O R T A T I O N   A L L O W E D :                             $                 2 2 4 2 . 0 0 
+ 
+ T R A N S P O R T A T I O N   R E I M B U R S E   F E E :                 $                     4 8 . 0 0 
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ 
+ 
+ 
+ * * C O N F E R E N C E * * 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ T H I S   S E C T I O N   D I S P L A Y S   T H E   D E T A I L S   O F   E X P E N S E S   R E L A T E D   T O   C O N F E R E N C E   F E E 
+ 
+ C O N F E R E N C E   R E G I S T R A T I O N   F E E :                   $                 1 2 0 0 . 0 0 
+ 
+ S E M I N A R   R E G I S T R A T I O N   F E E :                         $                 2 4 0 0 . 0 0 
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ 
+ 
+ 
+ * * H O T E L   E X P E N S E * * 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ T H I S   S E C T I O N   D I S P L A Y S   T H E   D E T A I L S   O F   E X P E N S E S   R E L A T E D   T O   H O T E L   F E E 
+ 
+ T O T A L   H O T E L   E X P E N S E :                                   $                   2 1 6 . 0 0 
+ 
+ H O T E L   E X P E N S E   A L L O W E D :                               $                   2 7 0 . 0 0 
+ 
+ H O T E L   E X P E N S E   S A V E D :                                   $                     5 4 . 0 0 
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ 
+ 
+ * * F O O D   E X P E N S E * * 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ T H I S   S E C T I O N   D I S P L A Y S   T H E   D E T A I L S   O F   E X P E N S E S   R E L A T E D   T O   F O O D 
+ 
+ T O T A L   F O O D   E X P E N S E :                                     $                   1 5 7 . 2 0 
+ 
+ T O T A L   F O O D   E X P E N S E   A L L O W E D :                     $                   1 4 8 . 0 0 
+ 
+ F O O D   E X P E N S E   R E I M B U R S E :                             $                       9 . 2 0 
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ 
+ 
+ 
+ * * S U M M A R Y * * 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ T O T A L   E X P E N S E                                                 $                   6 2 6 3 . 2 
+ 
+ T O T A L   A L L O W E D   E X P E N S E                                 $                       6 2 6 0 
+ 
+ E X P E N S E   N E E D S   R E I M B U R S I N G                         $                         3 . 2 
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ 
+ 
+ 

@@ -1,0 +1,9 @@
+Overloaded Hospital Report
+----------------------------
+
+Patient Type: In-patient
+Number of days in hospital: 30
+Daily charge: $25.00
+Medication charge: $400.00
+Service charge: $500.00
+Total charges: $1650.00

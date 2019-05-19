@@ -1,0 +1,12 @@
+Course Grade Report
+----------------------
+
+
+Student Name           Student ID           Average Test Score           Course Grade
+------------------------------------------------------------------------------------------
+Yu Miao                     1                       97.00                      A
+Yingying Cheng              2                       95.00                      A
+Wenhao Cheng                3                       89.00                      B
+Xiaolin Jia                 4                       85.00                      B
+Ziqiang Ye                  5                       64.00                      D
+------------------------------------------------------------------------------------------

@@ -1,0 +1,8 @@
+ Student Name        Average Score       Grade
+--------------------------------------------------
+       Yu Miao            99.6667          A
+   Jia Xiaolin            73.3333          C
+  Cheng Wenhao            85.6667          B
+Cheng Yingying            91.6667          A
+      Da Meizi            81.3333          B
+--------------------------------------------------

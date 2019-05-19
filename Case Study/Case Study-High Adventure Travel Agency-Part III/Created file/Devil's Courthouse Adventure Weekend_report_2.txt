@@ -1,0 +1,25 @@
+        ************************************
+         ** High Adventure Travel Agency **
+        ------------------------------------
+        Devil's Courthouse Adventure Weekend
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Package Description
+---------------------
+An action-packed three-day weekend spent camping,
+rock climbing, and rapelling at Devil's Courthouse,
+North Carolina. This getaway is for novices and 
+experts alike. Optional climbing instruction is
+available to beginners at a low price. Camping
+equipment rental is also available.
+
+Package Details:
+-------------------------------------------------------
+Number in Party                                7
+Base Charges                         $   2450.00
+Instruction Cost                     $    400.00
+Equipment Rental                     $    360.00
+Discount                             $    245.00
+Total Charges                        $   2965.00
+Required Deposit                     $   1482.50
+-------------------------------------------------------

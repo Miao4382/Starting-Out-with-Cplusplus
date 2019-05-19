@@ -1,0 +1,904 @@
+
+#include <iostream>
+#include <vector>
+#include <string>
+#include <cstring>
+#include <fstream>
+#include <iomanip>
+#include <ctime>
+#include <cctype>
+
+/* Named Constant */
+const int NAME_SIZE = 51;
+const int ADDRESS_SIZE = 101;
+const int CITY_ZIP_SIZE = 101;
+const int PHONE_SIZE = 20;
+const int DATE_SIZE = 11;
+const int KEYWORD_SIZE = 101;
+
+/* Structure Declaration */
+struct Account
+{
+	bool is_delete; //to hold wether this record has been deleted or not
+	int account_number; //account number for each account.
+	char name[NAME_SIZE]; //name of account holder
+	char address[ADDRESS_SIZE]; //address
+	char city_zip[CITY_ZIP_SIZE]; //city, state and zip
+	char phone[PHONE_SIZE]; //phone number
+	char date[DATE_SIZE]; //last day of payment
+	double balance; //account balance
+};
+
+/* Function Prototype */
+int database_size(std::fstream &file, std::vector<int> deleted_position);
+void fill_deleted_position(std::fstream &file, std::vector<int> &deleted_position);
+void show_menu(char &choice, int num_record);
+void add_account(std::fstream &file, std::vector<int> &deleted_position);
+void record_input(Account &record);
+bool date_check(char *date);
+void display(const Account &record);
+int search(std::fstream &file);
+void display_account(std::fstream &file);
+void delete_account(std::fstream &file, std::vector<int> &deleted_position);
+void modify_account(std::fstream &file);
+int date_ch_to_int(char *date_ch);
+void display_overdue(std::fstream &file);
+void clear_deleted(std::fstream &file, std::vector<int> &deleted_position);
+
+int main()
+{
+	///* Define a File Stream Object, Open the File in out|in|binary Mode */
+	std::fstream file;
+	////check if "D:\\customer account database.dat" exist, if not, create one
+	//file.open("D:\\customer account database.dat", std::ios::in);
+	//if (file.fail()) //file doesn't exist, should create one
+	//{
+	//	file.close();
+	//	file.open("D:\\customer account database.dat", std::ios::out);
+	//	file.close();
+	//}
+	//open the file with in|out|binary mode
+	file.open("D:\\customer account database.dat", std::ios::out | std::ios::in | std::ios::binary);
+
+	/* Define a Vector of Integer, to Store the Position of Deleted record */
+	std::vector<int> deleted_position;
+	//call fill_deleted_position() to go over the database and load deleted position into this vector
+	fill_deleted_position(file, deleted_position);
+
+	/* Show menu and ask user to choose one term */
+	char choice; //hold user's choice
+	do
+	{
+		show_menu(choice, database_size(file, deleted_position));
+		switch (choice)
+		{
+		case '1': //add account
+			add_account(file, deleted_position);
+			break;
+		case '2': //display account
+			display_account(file);
+			break;
+		case '3': //delete account
+			delete_account(file, deleted_position);
+			break;
+		case '4': //modify account
+			modify_account(file);
+			break;
+		case '5': //display overdue account
+			display_overdue(file);
+			break;
+		case '6': //clear deleted account
+			clear_deleted(file, deleted_position);
+			break;
+		case '7':
+			break;
+		}
+	} while (choice != '7');
+
+	std::cout << "Thanks for using account management program!\n";
+
+	return 0;
+}
+
+//database_size function. Can return the number of un-deleted records in the file
+int database_size(std::fstream &file, std::vector<int> deleted_position)
+{
+	//rewind the file stream object
+	file.clear();
+	file.seekg(0, std::ios::end);
+
+	//define container 
+	int size_file = file.tellg();
+	int size_record = sizeof(Account);
+	int num_deleted = deleted_position.size();
+
+	return size_file / size_record - num_deleted;
+}
+
+//show menu function
+void show_menu(char &choice, int num_record)
+{
+	std::cout << "\nCustomer Accounts Management System\n"
+		<< "Current record in database: " << num_record << "\n"
+		<< "1) Add new customer account\n"
+		<< "2) Display account\n"
+		<< "3) Delete account\n"
+		<< "4) Modify account\n"
+		<< "5) Display overdue account\n"
+		<< "6) Clear all deleted account\n"
+		<< "7) Quit\n";
+
+	std::cin >> choice;
+	while (choice < 49 || choice > 55)
+	{
+		std::cout << "Please input 1 ~ 7: ";
+		std::cin >> choice;
+	}
+	std::cin.ignore(); //skip '\n'
+}
+
+//account add function. Add record into the file. Will first add to deleted slot. If no deleted slot, add to the end of the file
+void add_account(std::fstream &file, std::vector<int> &deleted_position)
+{
+	Account record; //define a container to hold account info, will be saved to file after inputing information
+	record.is_delete = false; //set delete flag to false
+
+							  /* Assign account number */
+							  //account number is assigned to every newly created account automatically
+	int account_number = time(0) - 555555555555; //initialize account number
+	record.account_number = account_number;
+
+	/* Call record_input function to get remaining information */
+	record_input(record);
+
+	/* Save record to file */
+	//if deleted_position is empty, save to the last position in file 
+	//else, save to the position stored in the last element of deleted_position[], and pop_back
+	if (deleted_position.size() == 0)
+	{
+
+		//rewind the file stream object, move to the end of the file
+		file.clear();
+		file.seekp(0, std::ios::end);
+		//save record to file
+		file.write(reinterpret_cast<char *>(&record), sizeof(record));
+	}
+	else
+	{
+		//rewind the file, move to the position stored in the last element of deleted_position
+		file.clear();
+		int position = deleted_position[deleted_position.size() - 1];
+		file.seekp(position * sizeof(record), std::ios::beg);
+		//save record to file (actually overwrite previous deleted data)
+		file.write(reinterpret_cast<char *>(&record), sizeof(record));
+		//delete the last element in deleted_position[], because it is already used above
+		deleted_position.pop_back();
+	}
+
+
+	/* Press enter to continue */
+	std::cout << "Account add successfully, please press enter to continue...";
+	std::cin.get();
+
+}
+
+//record_input function. Called by add_account() and modify_account(), will prompt user to input information of an account. 
+void record_input(Account &record)
+{
+	/* Input info */
+	std::cout << "Please input following account information\n";
+	//name
+	std::cout << "Name: ";
+	std::cin.getline(record.name, NAME_SIZE);
+	//address
+	std::cout << "Address: ";
+	std::cin.getline(record.address, ADDRESS_SIZE);
+	//city, state & zip
+	std::cout << "City, state and zip code: ";
+	std::cin.getline(record.city_zip, CITY_ZIP_SIZE);
+	//phone
+	std::cout << "Phone number: ";
+	std::cin.getline(record.phone, PHONE_SIZE);
+	//last day of payment & date check
+	std::cout << "Date of last payment (format: mm/dd/yyyy):  ";
+	std::cin.getline(record.date, DATE_SIZE);
+	while (!date_check(record.date)) //while date format has not met the requirement
+	{
+		std::cout << "Invalid date format, please input the date again in mm/dd/yyyy format: ";
+		std::cin.getline(record.date, DATE_SIZE);
+	}
+	//balance
+	std::cout << "Account balance: ";
+	std::cin >> record.balance;
+	std::cin.ignore(); //skip '\n'
+
+}
+
+//date format check function
+bool date_check(char *date)
+{
+	/* Check if the date array has 10 characters */
+	if (strlen(date) != 10)
+		return 0;
+
+	/* Check if the third, sixth element is '/' */
+	if (date[2] != '/' && date[5] != '/')
+		return 0;
+
+	/* Extract month, days and years */
+	char month_ch[2] = { date[0], date[1] };
+	char day_ch[2] = { date[3], date[4] };
+	char year_ch[4] = { date[6], date[7], date[8], date[9] };
+	int month = atoi(month_ch);
+	int day = atoi(day_ch);
+	int year = atoi(year_ch);
+
+	/*
+	Check month, day and year:
+	1) check month: within 1~12;
+	2) month 1, 3, 5, 7, 8, 10, 12 should have days between 1~31;
+	3) month 4, 6, 9, 11 should have days between 1~30;
+	4) month 2: check year. If its a leap year, day should between 1~29, otherwise 1~28;
+	*/
+	
+	if (month > 12 || month < 1)
+		return 0;
+	
+	switch (month)
+	{
+	case 1:
+	case 3:
+	case 5:
+	case 7:
+	case 8:
+	case 10:
+	case 12:
+		if (day < 1 || day > 31)
+			return 0;
+		else
+			return 1;
+		break;
+	case 4:
+	case 6:
+	case 9:
+	case 11:
+		if (day < 1 || day > 30)
+			return 0;
+		else
+			return 1;
+		break;
+	case 2:
+		//check the year is leap year or not
+		bool leap_year; //hold wether the year is leap year
+		if (year % 4 != 0)
+			leap_year = false;
+		else if (year % 100 != 0)
+			leap_year = true;
+		else if (year % 400 != 0)
+			leap_year = false;
+		else
+			leap_year = true;
+
+		//check number of days in Feburary
+		if (leap_year)
+		{
+			if (day < 1 || day > 29)
+				return 0;
+		}
+
+		else
+			if (day < 1 || day > 28)
+				return 0;
+
+		return 1;
+	}
+
+
+}
+
+//display function, will display the record of a single account
+void display(const Account &record)
+{
+	std::cout << std::setprecision(2) << std::fixed;
+	std::cout << "Account number: " << record.account_number << "\n";
+	std::cout << "Name: " << record.name << "\n";
+	std::cout << "Address: " << record.address << "\n";
+	std::cout << "City, state and zip code: " << record.city_zip << "\n";
+	std::cout << "Phone: " << record.phone << "\n";
+	std::cout << "Date of last payment: " << record.date << "\n";
+	std::cout << "Account balance: $" << record.balance << "\n";
+}
+
+// search function, will return the position of specific record (position in file). Ignore deleted file
+int search(std::fstream &file)
+{
+	// work load description: write a search function
+
+	// 1. ask keyword type:
+	// 1) account number
+	// 2) name
+	// 3) address 
+	// 4) city, state, zip
+	// 5) phone
+	// 6) balance
+	// 2. ask to input keyword
+	// 3. find out all record that match, display, ignore deleted file
+	// 4. ask user to pick one
+	// 5. return the file position of this record
+
+	/* Show menu, prompt user to input one type of key word to search */
+	std::cout << "\nPlease select one type of keyword to search:\n"
+		<< "1) Account number\n"
+		<< "2) Name\n"
+		<< "3) Address\n"
+		<< "4) City, state and zip code\n"
+		<< "5) Phone\n"
+		<< "6) Date of last payment\n"
+		<< "7) Balance\n";
+	char selection; //hold choice, 1~6
+	std::cin >> selection;
+	while (selection < 49 || selection > 55)
+	{
+		std::cout << "Invalid input, please select from 1 ~ 6: ";
+		std::cin >> selection;
+	}
+	std::cin.ignore(); //skip the '\n'
+
+					   /* Input keyword */
+	std::string keyword;
+	std::cout << "Please input the keyword to search: ";
+	getline(std::cin, keyword);
+
+	/* Search the file, store the position of first matching record to a vector */
+	std::vector<int> match_position; //to store the position of first general match
+	Account record; //to hold record read from the file 
+					//rewind file stream object
+	file.clear();
+	file.seekg(0, std::ios::beg);
+	//read first record
+	file.read(reinterpret_cast<char *>(&record), sizeof(record));
+	//perform search based on selection, ignore deleted records, all match position will be stored in the match_position[] vector
+	switch (selection)
+	{
+	case '1': //search account number
+		while (!file.eof())
+		{
+			//if record is deleted, ignore
+			if (record.is_delete == true)
+			{
+				file.read(reinterpret_cast<char *>(&record), sizeof(record)); //read next record
+				continue; //begin next loop
+			}
+
+			// search for account number if there is any match of the keyword
+			//transform the account number (integer) to string;
+			std::string account_number_string = std::to_string(record.account_number);
+			//search the account_number_string to see if there is any match of keyword
+			if (account_number_string.find(keyword) != -1) //match found
+			{
+				int position = file.tellg() / sizeof(record) - 1; //unit of position is "record". For example, position = 3 means fourth record in the file
+				match_position.push_back(position); //store the position in the vector
+			}
+
+			//read the next record
+			file.read(reinterpret_cast<char *>(&record), sizeof(record));
+		}
+		break;
+
+	case '2': //search name
+		while (!file.eof())
+		{
+			if (record.is_delete == true)
+			{
+				file.read(reinterpret_cast<char *>(&record), sizeof(record));
+				continue;
+			}
+
+			//transform the name to string;
+			std::string name(record.name);
+			//search the name string to see if there is any match of keyword
+			if (name.find(keyword) != -1) //match found
+			{
+				int position = file.tellg() / sizeof(record) - 1;
+				match_position.push_back(position); //store the position in the vector
+			}
+
+			//read the next record
+			file.read(reinterpret_cast<char *>(&record), sizeof(record));
+		}
+		break;
+
+	case '3': //search address
+		while (!file.eof())
+		{
+			if (record.is_delete == true)
+			{
+				file.read(reinterpret_cast<char *>(&record), sizeof(record));
+				continue;
+			}
+
+			//transform the address to string;
+			std::string address(record.address);
+			//search the address string to see if there is any match of keyword
+			if (address.find(keyword) != -1) //match found
+			{
+				int position = file.tellg() / sizeof(record) - 1;
+				match_position.push_back(position); //store the position in the vector			
+			}
+
+			//read the next record
+			file.read(reinterpret_cast<char *>(&record), sizeof(record));
+		}
+		break;
+
+	case '4': //search city, state, zip
+		while (!file.eof())
+		{
+			if (record.is_delete == true)
+			{
+				file.read(reinterpret_cast<char *>(&record), sizeof(record));
+				continue;
+			}
+
+			//transform the city_zip to string;
+			std::string city_zip(record.city_zip);
+			//search the city_zip string to see if there is any match of keyword
+			if (city_zip.find(keyword) != -1) //match found
+			{
+				int position = file.tellg() / sizeof(record) - 1;
+				match_position.push_back(position); //store the position in the vector				
+			}
+
+			//read the next record
+			file.read(reinterpret_cast<char *>(&record), sizeof(record));
+		}
+		break;
+
+	case '5': //search phone
+		while (!file.eof())
+		{
+			if (record.is_delete == true)
+			{
+				file.read(reinterpret_cast<char *>(&record), sizeof(record));
+				continue;
+			}
+
+			//transform the phone to string;
+			std::string phone(record.phone);
+			//search the phone string to see if there is any match of keyword
+			if (phone.find(keyword) != -1) //match found
+			{
+				int position = file.tellg() / sizeof(record) - 1;
+				match_position.push_back(position); //store the position in the vector			
+			}
+
+			//read the next record
+			file.read(reinterpret_cast<char *>(&record), sizeof(record));
+		}
+		break;
+
+	case '6': //search date of last payment 
+		while (!file.eof())
+		{
+			if (record.is_delete == true)
+			{
+				file.read(reinterpret_cast<char *>(&record), sizeof(record));
+				continue;
+			}
+
+			//transform the date to string;
+			std::string date(record.date);
+			//search the date string to see if there is any match of keyword
+			if (date.find(keyword) != -1) //match found
+			{
+				int position = file.tellg() / sizeof(record) - 1;
+				match_position.push_back(position); //store the position in the vector				
+			}
+
+			//read the next record
+			file.read(reinterpret_cast<char *>(&record), sizeof(record));
+		}
+		break;
+
+	case '7': //search balance
+		while (!file.eof())
+		{
+			//if record is deleted, ignore
+			if (record.is_delete == true)
+			{
+				file.read(reinterpret_cast<char *>(&record), sizeof(record)); //read next record
+				continue; //begin next loop
+			}
+
+			// search for balance if there is any match of the keyword
+			//transform the balance (double) to string;
+			std::string balance_string = std::to_string(record.balance);
+			//search the balance_string to see if there is any match of keyword
+			if (balance_string.find(keyword) != -1) //match found
+			{
+				int position = file.tellg() / sizeof(record) - 1; //unit of position is "record". For example, position = 3 means fourth record in the file
+				match_position.push_back(position); //store the position in the vector			
+			}
+
+			//read the next record
+			file.read(reinterpret_cast<char *>(&record), sizeof(record));
+		}
+		break;
+	}
+
+	/* Display the first matching record and ask user pick one as final choice */
+	std::cout << "\nSearch result:\n";
+	if (match_position.size() == 0) //no match result, return -1
+		return -1;
+	else
+	{
+		//display match result 
+		for (int i = 0; i<match_position.size(); i++)
+		{
+			std::cout << "\n\nResult " << i + 1 << "\n"; //match result #
+														 //rewind file stream object
+			file.clear();
+			file.seekg(match_position[i] * sizeof(record), std::ios::beg);
+			//read to record
+			file.read(reinterpret_cast<char *>(&record), sizeof(record));
+			//display record, only display the search type
+			switch (selection)
+			{
+			case '1':
+				std::cout << "Account number: " << record.account_number << "\n";
+				break;
+			case '2':
+				std::cout << "Name: " << record.name << "\n";
+				break;
+			case '3':
+				std::cout << "Address: " << record.address << "\n";
+				break;
+			case '4':
+				std::cout << "City, state & zip code: " << record.city_zip << "\n";
+				break;
+			case '5':
+				std::cout << "Phone: " << record.phone << "\n";
+				break;
+			case '6':
+				std::cout << "Date of last payment: " << record.date << "\n";
+				break;
+			case '7':
+				std::cout << "Account balance: " << record.balance << "\n";
+				break;
+			}
+		}
+	}
+
+	//define a container to hold user's search_choice, ask for choice
+	int search_choice;
+	std::cout << "Please input the number of your desired result: ";
+	std::cin >> search_choice;
+	while (search_choice < 1 || search_choice > match_position.size())
+	{
+		std::cout << "Invalid input, please input again: ";
+		std::cin >> search_choice;
+	}
+	std::cin.ignore(); //skip '\n'
+
+					   //return the position (position's unit is record, if position == 3, that means the third record in file)
+	return match_position[search_choice - 1];
+
+}
+
+// display_account function, can:
+// 1) display a specific account searched by user
+// 2) display entire database
+// will ignore records that is_delete == true
+void display_account(std::fstream &file)
+{
+	/* Display menu and make a choice */
+	char choice_display; //hold choice
+	std::cout << "Please select how you would display account:\n"
+		<< "1) Display an account by searching keyword\n"
+		<< "2) Display all account\n";
+	std::cin >> choice_display;
+	while (choice_display != '1' && choice_display != '2')
+	{
+		std::cout << "Please input 1 or 2: ";
+		std::cin >> choice_display;
+	}
+	std::cin.ignore(); //skip '\n'
+
+					   /* Perform different operations based on choice_display */
+	Account record; //hold data read from file
+
+					//choose 2 to display all accounts, ignore deleted account
+	if (choice_display == '2')
+	{
+		int counter = 0;
+		//rewind file streamer
+		file.clear();
+		file.seekg(0, std::ios::beg);
+		//read first record
+		file.read(reinterpret_cast<char *>(&record), sizeof(record));
+		//use loop to go over all account
+		while (!file.eof())
+		{
+			if (!record.is_delete) //if the record is not flagged deleted, display it
+			{
+				counter++; //found one non-deleted record, update the counter
+				std::cout << "\n\nRecord " << counter << "\n";
+				display(record);
+			}
+
+			//read next record
+			file.read(reinterpret_cast<char *>(&record), sizeof(record));
+		}
+
+		//display complete, press enter to continue
+		std::cout << "Display completed, please press enter to continue...";
+		std::cin.get();
+
+		return;
+	}
+
+	// choose 1 to display single record
+	// call search function to locate the record position
+	int display_position; //hold the position to display
+	display_position = search(file);
+	// if return -1, no record found, notify user and press enter to continue
+	if (display_position == -1)
+	{
+		std::cout << "No record found, please press enter to continue...";
+		std::cin.get();
+	}
+	else
+	{
+		// rewind file stream object
+		file.clear();
+		file.seekg(display_position * sizeof(record), std::ios::beg);
+		//read and display the record
+		file.read(reinterpret_cast<char *>(&record), sizeof(record));
+		std::cout << "\n";
+		display(record);
+
+		//display complete, press enter to continue
+		std::cout << "Display completed, please press enter to continue...";
+		std::cin.get();
+	}
+
+
+}
+
+// delete account function
+/*
+the function will delete an chosen account in the file. It's working process is:
+1) ask the user to search an account to delete, call search function. Use an int variable to hold the returned position of files
+2) access the corresponding account via file stream object and the position
+3) set "is_delete" flag as true, this marks the account as deleted account
+4) store the position in deleted_position[] vector, used for future adding account
+5) notify the user deletion is complete, press enter to continue
+*/
+void delete_account(std::fstream &file, std::vector<int> &deleted_position)
+{
+	/* Define a variable to hold the delete_position, call search function to search */
+	int position;
+	std::cout << "You have to search for the account to delete.\n";
+	position = search(file);
+
+	//if not found, notify the user
+	if (position == -1)
+	{
+		std::cout << "No record found, please press enter to continue...";
+		std::cin.get();
+	}
+
+	else
+	{
+		/* Copy the record and display the account, ask for reassurement */
+		Account record_delete;
+		//move file stream object
+		file.clear();
+		file.seekp(position * sizeof(record_delete), std::ios::beg);
+		file.read(reinterpret_cast<char *>(&record_delete), sizeof(record_delete));
+		//ask for second assurement
+		std::cout << "\nThe account you choose is:\n";
+		display(record_delete);
+		std::cout << "\nAre you sure you want to delete this account? (Y/N)";
+		char choice_delete;
+		std::cin >> choice_delete;
+		while (toupper(choice_delete) != 'Y' && toupper(choice_delete) != 'N')
+		{
+			std::cout << "Invalid input, please input again (Y/N) ";
+			std::cin >> choice_delete;
+		}
+		std::cin.ignore(); //skip the '\n'
+
+		if (toupper(choice_delete) == 'N')
+		{
+			std::cout << "Press enter to go back to main menu...";
+			std::cin.get();
+			return;
+		}
+
+		/* Access the account, set is_delete to true */
+		bool is_delete = true;
+		file.clear();
+		file.seekp(position * sizeof(record_delete), std::ios::beg);
+		file.write(reinterpret_cast<char *>(&is_delete), sizeof(is_delete));
+
+		/* Store the position into deleted_position[] vector, and notify user */
+		deleted_position.push_back(position);
+		std::cout << "Deletion complete, press enter to continue...";
+		std::cin.get();
+	}
+
+
+}
+
+//at startup, initialize deleted_position[] vector, fill it with deleted slot position information
+void fill_deleted_position(std::fstream &file, std::vector<int> &deleted_position)
+{
+	/* If the file's size */
+	//define the temporary container 
+	Account record;
+	int position;
+
+	//read the first record
+	file.clear();
+	file.seekg(0, std::ios::beg);
+	file.read(reinterpret_cast<char *>(&record), sizeof(record));
+
+	while (!file.eof())
+	{
+		//save the position to deleted_position[] vector if it is deleted
+		if (record.is_delete == true)
+		{
+			position = file.tellg() / sizeof(record) - 1;
+			deleted_position.push_back(position);
+		}
+
+		//read next record
+		file.read(reinterpret_cast<char *>(&record), sizeof(record));
+
+	}
+}
+
+// modify the account
+// 1) search specific record
+// 2) ask for details of modification
+// 3) save the record (overwrite)
+void modify_account(std::fstream &file)
+{
+	/* Search record */
+	std::cout << "You have to search a record to modify.\n";
+	int position_modify;
+	position_modify = search(file);
+
+	// do nothing if result not found
+	if (position_modify == -1)
+	{
+		std::cout << "No record found, please press enter to continue...";
+		std::cin.get();
+		return;
+	}
+
+	/* ask for details of modification */
+	Account record;
+	//copy the target record to this container
+	file.clear();
+	file.seekg(position_modify * sizeof(record), std::ios::beg);
+	file.read(reinterpret_cast<char *>(&record), sizeof(record));
+	//call record_input function to input modification	
+	record_input(record);
+
+	/* Save the record back to file */
+	file.clear();
+	file.seekp(position_modify * sizeof(record), std::ios::beg);
+	file.write(reinterpret_cast<char *>(&record), sizeof(record));
+
+	/* Press enter to continue */
+	std::cout << "Modification complete, press enter to continue...";
+	std::cin.get();
+
+}
+
+// transform the date stored in char array into integer for easier compariance. For example:
+// input: 02/05/1998; output: 19980502
+int date_ch_to_int(char *date_ch)
+{
+	/* Extract month, days and years */
+	char month_ch[2] = { date_ch[0], date_ch[1] };
+	char day_ch[2] = { date_ch[3], date_ch[4] };
+	char year_ch[4] = { date_ch[6], date_ch[7], date_ch[8], date_ch[9] };
+	int month = atoi(month_ch);
+	int day = atoi(day_ch);
+	int year = atoi(year_ch);
+
+	/* Calculate the corresponding integer */
+	return year * 10000 + month * 100 + day;
+}
+
+//display overdue account
+//1) ask for the date to check
+//2) transform the date to integer
+//3) go over the file to find out the account that the last payment day is before this date, display the matched account
+void display_overdue(std::fstream &file)
+{
+	/* Ask user to input date to check */
+	std::cout << "Please input a date in mm/dd/yyyy format, the program will display all records that the last payment day is prior to the inputed date: ";
+	char due_date_ch[DATE_SIZE];
+	std::cin.getline(due_date_ch, DATE_SIZE);
+	while (!date_check(due_date_ch))
+	{
+		std::cout << "Invalid date format, please input in mm/dd/yyyy: ";
+		std::cin.getline(due_date_ch, DATE_SIZE);
+	}
+
+	int due_date = date_ch_to_int(due_date_ch); //transform to integer
+
+												/* Rewind file stream object */
+	file.clear();
+	file.seekg(0, std::ios::beg);
+
+	/* Go over the file, display account with last payment date before the input date */
+	Account record;
+	file.read(reinterpret_cast<char *>(&record), sizeof(record));
+	int counter = 1;
+	while (!file.eof())
+	{
+		if (date_ch_to_int(record.date) <= due_date)
+		{
+			std::cout << "\nRecord " << counter++ << ":\n";
+			display(record);
+		}
+		//read the next record 
+		file.read(reinterpret_cast<char *>(&record), sizeof(record));
+	}
+	std::cout << "\n";
+
+}
+
+// clear deleted account
+// 1) go over the file, store every un-deleted file to a vector
+// 2) disconnect the file stream object, open the file again in out|binary mode 
+// 3) write content in the vector to the file
+// 4) disconnect the file, then reopen it in out|in|binary mode
+// 5) notify user of clearing complete
+void clear_deleted(std::fstream &file, std::vector<int> &deleted_position)
+{
+	/* Define a temporary container to hold un-deleted data */
+	std::vector <Account> accounts;
+
+	/* Go over the file, save un-deleted record to the vector */
+	//rewind file stream object
+	file.clear();
+	file.seekg(0, std::ios::beg);
+	//define a container, and a counter for number of deleted accounts
+	Account record;
+	int counter = 0;
+	//read first record 
+	file.read(reinterpret_cast<char *>(&record), sizeof(record));
+	//use loop to go over the file, save un-deleted record to the vector
+	while (!file.eof())
+	{
+		if (record.is_delete == false)
+			accounts.push_back(record);
+		else
+			counter++;
+		//read next record
+		file.read(reinterpret_cast<char *>(&record), sizeof(record));
+	}
+
+	/* close the file, reopen in out|binary mode, write in data */
+	file.close();
+	file.open("D:\\customer account database.dat", std::ios::out | std::ios::binary);
+	for (int i = 0; i<accounts.size(); i++)
+		file.write(reinterpret_cast<char *>(&accounts[i]), sizeof(accounts[i]));
+
+	/* close the file, reopen it with out|in|binary mode, also clear deleted_position[] */
+	file.close();
+	file.open("D:\\customer account database.dat", std::ios::in | std::ios::out | std::ios::binary);
+	deleted_position.clear();
+
+	/* Press enter to continue */
+	std::cout << "Process completed. " << counter << " deleted accounts are cleared, press enter tp continue...";
+	std::cin.get();
+
+
+}

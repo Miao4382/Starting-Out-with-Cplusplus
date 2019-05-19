@@ -1,0 +1,13 @@
+          Dear Mr. Daha          
+                    
+          Our records show that your account has a balance of $100          
+          and a past due amount of $2. Your last payment was on 5/6/2007.          
+          Since we haven't heard from you in some time, would you          
+          please take a moment to send us a check for the past due          
+          amount? We value your business and look forward to serving          
+          you in the future.          
+                    
+          Sincerely,          
+          The Management          
+                    
+          P.S. If you've already sent your payment, ignore this reminder.

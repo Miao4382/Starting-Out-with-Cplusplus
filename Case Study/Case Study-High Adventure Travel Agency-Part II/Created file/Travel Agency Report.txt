@@ -1,0 +1,6 @@
+Total package sold: 11
+Total sales: 62500.00
+Devil package sold: 2, percentage: 0.18 Sales from these devil package: 5870.00. Sales percentage: 0.09
+Scuba package sold: 2, percentage: 0.18 Sales from these scuba package: 17200.00. Sales percentage: 0.28
+Sky package sold: 3, percentage: 0.27 Sales from these sky package: 17140.00. Sales percentage: 0.27
+Barron package sold: 4, percentage: 0.36 Sales from these barron package: 22290.00. Sales percentage: 0.36

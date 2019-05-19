@@ -1,0 +1,15 @@
+Lowest Score Drop Report
+--------------------------
+
+  Test           Score
+--------------------------
+    1           100.00
+    2            90.00
+    3            85.00
+    4            98.00
+    5            79.00
+--------------------------
+
+Summary:
+Lowest score is from test 5, Score: 79.00
+Average score after dropping the lowest score: 93.25

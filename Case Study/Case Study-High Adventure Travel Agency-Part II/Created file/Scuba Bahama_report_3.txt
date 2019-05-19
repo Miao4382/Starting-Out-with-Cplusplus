@@ -1,0 +1,22 @@
+        ************************************
+         ** High Adventure Travel Agency **
+        ------------------------------------
+                ***Scuba Bahama***
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Package Description
+---------------------
+A week-long cruise to the Bahamas with three days of 
+scuba diving. Those with prior experience may dive 
+right in, while beginners should choose to take optional, 
+but very affordable lessons.
+
+Package Details:
+-------------------------------------------------------
+Number in Party                                6
+Base Charges                         $   6000.00
+Instruction Cost                     $    300.00
+Discount                             $    600.00
+Total Charges                        $   5700.00
+Required Deposit                     $   2850.00
+-------------------------------------------------------

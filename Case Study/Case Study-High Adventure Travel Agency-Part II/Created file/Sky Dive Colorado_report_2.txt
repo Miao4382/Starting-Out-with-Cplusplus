@@ -1,0 +1,23 @@
+        ************************************
+         ** High Adventure Travel Agency **
+        ------------------------------------
+                Sky Dive Colorado
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Package Description
+---------------------
+Four thrilling days with expert sky-diving instructors 
+in Colorado Springs, Colorado. For lodging, you may  
+choose either the Wilderness Lodge or the Luxury Inn. 
+(Instruction is included for all members of the party.)
+
+Package Details:
+-------------------------------------------------------
+Number in Party                                2
+Base Charges                         $    800.00
+Lodging at Wilderness Lodge          $    520.00
+Lodging at Luxury inn                $      0.00
+Discount                             $      0.00
+Total Charges                        $   1320.00
+Required Deposit                     $    660.00
+-------------------------------------------------------

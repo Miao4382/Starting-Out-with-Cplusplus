@@ -1,0 +1,15 @@
+Product Number            Product Title            Product Price($)        Unit Sold         Sales($)
+------------------------------------------------------------------------------------------------------------
+       914            Six Steps to Leadership            12.95                  842            10903.90
+       918           Seven Lessons of Quality            21.95                  437             9592.15
+       917           Seven Lessons of Quality            16.95                  514             8712.30
+       919           Seven Lessons of Quality            31.95                  269             8594.55
+       921          Leadership for the Future            14.95                  492             7355.40
+       915            Six Steps to Leadership            14.95                  416             6219.20
+       922          Leadership for the Future            16.95                  212             3593.40
+       916             The Road to Excellence            18.95                  127             2406.65
+       920           Teams Are Made, Not Born            14.95                   97             1450.15
+------------------------------------------------------------------------------------------------------------
+
+Total units sold during the past six months: 3406
+Total sales: $58827.70

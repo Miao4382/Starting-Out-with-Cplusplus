@@ -1,0 +1,17 @@
+The data is:
+R C R S R S R R S R S C R C S S S S R S C S R C S S C C R S 
+
+C R R R S R S R C S R C R S S S R S C R R S C C S C S C R R 
+
+C R C C S C C R R R S S S C R C C C R C R S S S R S C R R C 
+
+Weather data analysis:
+
+ Weather           June           July         August         Total
+---------------------------------------------------------------------------
+   Rainy             10             12             10             32
+  Cloudy              7              8             12             27
+   Sunny             13             10              8             31
+---------------------------------------------------------------------------
+
+July has the highest rainy day.

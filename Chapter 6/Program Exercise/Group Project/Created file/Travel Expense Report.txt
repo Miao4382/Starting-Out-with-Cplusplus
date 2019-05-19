@@ -1,0 +1,97 @@
+                                  Travel Expenses Report
+-------------------------------------------------------------------------------------------
+
+
+**Overview**
+-------------------------------------------------------------------------------------------
+This section displays the total travel days, departure and arrival time.
+
+Overview:
+Total Travel Days            4
+Departure Time           5:55
+Back Time                23:0
+-------------------------------------------------------------------------------------------
+
+
+
+**Transportation**
+-------------------------------------------------------------------------------------------
+This section displays the details of expenses related to transportation
+
+Round-trip Air Expenses:             $        1200.00
+
+Car rental expense:                  $         200.00
+
+Private car expense:                 $         810.00
+
+Total parking expense:               $          15.00
+
+Parking fee paid by company:         $          12.00
+
+Parking fee paid by employee:        $           3.00
+
+Total taxi expense:                  $          65.00
+
+Taxi fee paid by company:            $          20.00
+
+Taxi fee paid by employee:           $          45.00
+
+Transportation total:                $        2290.00
+
+Transportation allowed:              $        2242.00
+
+Transportation reimburse fee:        $          48.00
+
+-------------------------------------------------------------------------------------------
+
+
+
+**Conference**
+-------------------------------------------------------------------------------------------
+This section displays the details of expenses related to conference fee
+
+Conference registration fee:         $        1200.00
+
+Seminar registration fee:            $        2400.00
+
+-------------------------------------------------------------------------------------------
+
+
+
+**Hotel Expense**
+-------------------------------------------------------------------------------------------
+This section displays the details of expenses related to hotel fee
+
+Total hotel expense:                 $         216.00
+
+Hotel expense allowed:               $         270.00
+
+Hotel expense saved:                 $          54.00
+
+-------------------------------------------------------------------------------------------
+
+
+**Food Expense**
+-------------------------------------------------------------------------------------------
+This section displays the details of expenses related to food
+
+Total food expense:                  $         157.20
+
+Total food expense allowed:          $         148.00
+
+Food expense reimburse:              $           9.20
+
+-------------------------------------------------------------------------------------------
+
+
+
+**Summary**
+-------------------------------------------------------------------------------------------
+Total expense                        $         6263.2
+
+Total allowed expense                $           6260
+
+Expense needs reimbursing            $            3.2
+
+-------------------------------------------------------------------------------------------
+

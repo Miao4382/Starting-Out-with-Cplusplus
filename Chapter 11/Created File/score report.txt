@@ -1,0 +1,8 @@
+Player Name           Player Number           Points Earned
+---------------------------------------------------------------
+Yu Miao                      5                        5
+Chengxi Zhang                2                        3
+Hongyuan Wang                7                        1
+---------------------------------------------------------------
+Player earns the most: Yu Miao
+Scores earned: 5

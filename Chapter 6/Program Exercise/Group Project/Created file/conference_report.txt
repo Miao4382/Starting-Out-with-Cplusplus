@@ -1,0 +1,11 @@
+**Conference**
+-------------------------------------------------------------------------------------------
+This section displays the details of expenses related to conference fee
+
+Conference registration fee:         $        1200.00
+
+Seminar registration fee:            $        2400.00
+
+-------------------------------------------------------------------------------------------
+
+

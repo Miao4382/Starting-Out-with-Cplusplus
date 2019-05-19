@@ -1,0 +1,13 @@
+**Food Expense**
+-------------------------------------------------------------------------------------------
+This section displays the details of expenses related to food
+
+Total food expense:                  $         157.20
+
+Total food expense allowed:          $         148.00
+
+Food expense reimburse:              $           9.20
+
+-------------------------------------------------------------------------------------------
+
+
